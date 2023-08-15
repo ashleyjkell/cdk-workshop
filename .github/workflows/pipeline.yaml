@@ -41,8 +41,8 @@ jobs:
     needs: build 
     runs-on: ubuntu-latest 
     steps:  
-    - uses: actions/checkout@v3 
-    - name: Approve 
+    - name: Approve
       uses: trstringer/manual-approval@v1 
       with:  
         approvers:  ashleyjkell
+        secret: ${{ secrets.GITHUB_TOKEN }}
