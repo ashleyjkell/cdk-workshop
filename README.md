@@ -164,7 +164,7 @@ jobs:
 
 ### Instructions:
 
-1. Add a `cdk diff` step to your workflow
+1. Add a `cdk diff` step to your `build` job
 2. Commit and push your code
 3. Check the run log for your workflow for any errors and to see your diff
 
