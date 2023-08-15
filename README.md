@@ -38,22 +38,22 @@ Remember when creating resources in AWS to add your own name or some other uniqu
 ### Instructions
 
 1. Sign into the AWS console and go to the IAM service
-2. Click "Roles" and then "Create role"
+2. Click "Users" and then "Create user"
 3. Click Next
 4. Attach the following permissions:
      - AmazonS3FullAccess
      - CloudformationFullAccess
-     - AWSLambda_FullAccess  
      - IAMFullAccess
-     - AmazonDynamoDBFullAccess
-5. Give the role a name like "GitHubCDKDeployRole" and create the role
-6. After creating the role, select it and go to the Summary page
-7. Click "Create access key" and copy the Access key ID and Secret
-8. In your GitHub repo, go to Settings, Secrets and Variables and click Actions
-9. Create a new repository secret called `AWS_ACCESS_KEY`
-10. Paste in the access key ID value and save
-11. Create another repository secret called `AWS_SECRET_KEY`
-12. Paste in the secret access key value and save
+     - AmazonSSMReadOnlyAccess
+5. Give the User a name like "GitHubCDKDeployUser" and create the User
+6. After creating the user, select it and go to the Security Credentials tab
+7. Click "Create access key", select CLI, accept the creation and click Next
+8. Copy the Access key ID and Secret
+9. In your GitHub repo, go to Settings, Secrets and Variables and click Actions
+10. Create a new repository secret called `AWS_ACCESS_KEY`
+11. Paste in the access key ID value and save
+12. Create another repository secret called `AWS_SECRET_KEY`
+13. Paste in the secret access key value and save
 
 ***
 
@@ -183,10 +183,8 @@ jobs:
 2. Make the `deploy` job require the `build` job to be completed first
 3. You'll need to install CDK, Python, requirements, and configure your AWS credentials again.
 4. Commit and push your code
-5. Manually run the workflow
-6. Manually approve it
-7. Check logs for any errors
-8. Check AWS to see if your changes were successful.
+5. Check workflow logs for any errors
+6. Check AWS to see if your changes were successful.
 
 ***
 
