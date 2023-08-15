@@ -5,11 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: Install CDK CLI
+      run: |
+        npm install -g aws-cdk
+
     - name: Set up Python 3.9
       uses: actions/setup-python@v4
       with: 
         python-version: '3.9'
-    
+
     - name: Install Python dependencies
       working-directory: cdk-app
       run: |
@@ -17,17 +22,13 @@ jobs:
         pip install -r requirements.txt
         pip install aws-cdk-lib
 
-    - name: Install CDK CLI
-      working-directory: cdk-app
-      run: |
-        npm install -g aws-cdk
-  
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: "eu-north-1"
-        
+
     - name: CDK Synth
+      working-directory: cdk-app
       run: cdk synth
