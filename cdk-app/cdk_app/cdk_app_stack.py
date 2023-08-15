@@ -10,6 +10,6 @@ class CdkAppStack(Stack):
 
         s3.Bucket(
         self, 
-        "MyBucket",
+        "MyBucketNotYours-AK",
         versioned=True
         )
